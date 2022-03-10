@@ -18,12 +18,5 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#FIX PERMISSIONS
-RUN mkdir ~/.npm-global && \
-  npm config set prefix '~/.npm-global' && \
-  export PATH=~/.npm-global/bin:$PATH
-
-RUN npm i screeps
-
 ENTRYPOINT ["/ampstart.sh"]
 CMD []

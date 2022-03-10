@@ -5,9 +5,8 @@ RUN apt-get update -y && apt-get upgrade -y && \
   apt-get install -y \
   apt-transport-https \
   ca-certificates \
-  make \
-  gcc \
-  g++ \
+  python2 \
+  build-essential \
   curl \
   gnupg2 \
   software-properties-common
@@ -16,13 +15,15 @@ RUN apt-get update -y && apt-get upgrade -y && \
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
   apt-get update -y && apt-get install -y nodejs
 
-# Install the latest version of yarn
-RUN npm install --global yarn
-
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN yarn global add screeps
+#FIX PERMISSIONS
+RUN mkdir ~/.npm-global && \
+  npm config set prefix '~/.npm-global' && \
+  export PATH=~/.npm-global/bin:$PATH
+
+RUN npm i screeps
 
 ENTRYPOINT ["/ampstart.sh"]
 CMD []

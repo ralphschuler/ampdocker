@@ -5,6 +5,9 @@ RUN apt-get update -y && apt-get upgrade -y && \
   apt-get install -y \
   apt-transport-https \
   ca-certificates \
+  make \
+  gcc \
+  g++ \
   curl \
   gnupg2 \
   software-properties-common

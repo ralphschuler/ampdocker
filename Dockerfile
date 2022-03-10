@@ -12,7 +12,7 @@ RUN apt-get update -y && apt-get upgrade -y && \
   software-properties-common
 
 # Install the latest version of Node.js
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get update -y && apt-get install -y nodejs
 
 # Clean up
